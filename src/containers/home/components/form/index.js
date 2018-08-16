@@ -1,13 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import Input from '../../../../components/input';
 import Button from '../../../../components/button';
 import validate from './validate';
 import styles from './styles.scss';
 
-const Form = ({ handleSubmit, pristine, submitting, reset }) => (
+let Form = ({ handleSubmit, pristine, submitting, reset }) => (
   <form onSubmit={handleSubmit} className={styles.form}>
     <div>
       <label>First Name</label>
@@ -67,9 +68,23 @@ Form.propTypes = {
   reset: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
+  hasFirstName: PropTypes.bool,
 };
 
-export default reduxForm({
+Form = reduxForm({
   form: 'simple',
   validate,
-})(Form)
+})(Form);
+
+// use form value selector to get form inner values
+const selector = formValueSelector('simple');
+const mapStateToProps = (state) => {
+  const firstName = selector(state, 'first_name');
+  return {
+    hasFirstName: !!firstName,
+  };
+};
+
+Form = connect(mapStateToProps)(Form);
+
+export default Form;
