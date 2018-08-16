@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Form from './components/form';
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const Home = () => (
-  <div>
-    <h1 className={styles.title}>Home</h1>
+  <div className={styles.container}>
+    <h1 className={styles.title}>Form Builder</h1>
     <Form onSubmit={() => {}} />
   </div>
 );
