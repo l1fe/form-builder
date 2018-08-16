@@ -1,0 +1,39 @@
+@import '../../styles/settings/colors';
+
+.container {
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.input {
+  outline: 0;
+  border: 1px solid $color-divider;
+  border-radius: 4px;
+  background: $color-white;
+  padding: 15px 20px;
+  width: 100%;
+  letter-spacing: 1px;
+  color: $color-darkblue;
+  font-size: 16px;
+  font-weight: 300;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-darkblue;
+  }
+}
+
+.withErrors {
+  composes: input;
+  border-color: $color-red !important;
+}
+
+.error {
+  margin-top: 10px;
+  text-align: center;
+  color: $color-red;
+  font-size: 14px;
+  font-weight: 300;
+}
