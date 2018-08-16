@@ -1,21 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import LogoIconSrc from './assets/svg/logo.svg';
 import store from './redux/store';
+import Home from './containers/home';
 import './styles/base.css';
 
 const App = () => (
   <Provider store={store}>
-    <div className="App">
-      <header className="App-header">
-        <img src={LogoIconSrc} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+    <Home />
   </Provider>
 );
 
