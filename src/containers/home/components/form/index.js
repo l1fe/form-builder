@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input';
 import Button from '../../../../components/button';
+import validate from './validate';
 import styles from './styles.scss';
 
 const Form = ({ handleSubmit, pristine, submitting, reset }) => (
@@ -69,5 +70,6 @@ Form.propTypes = {
 };
 
 export default reduxForm({
-  form: 'simple' // a unique identifier for this form
+  form: 'simple',
+  validate,
 })(Form)
