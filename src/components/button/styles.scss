@@ -1,0 +1,25 @@
+@import '../../styles/settings/colors';
+
+.btn {
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  outline: 0;
+  border: 1px solid $color-darkblue;
+  border-radius: 4px;
+  background: $color-white;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  min-height: 50px;
+  letter-spacing: 1px;
+  color: $color-darkblue;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.primary {
+  border: 0;
+  background-color: $color-lightblue;
+  color: $color-white;
+}

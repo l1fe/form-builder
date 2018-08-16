@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input';
+import Button from '../../../../components/button';
 import styles from './styles.scss';
 
 const Form = ({ handleSubmit, pristine, submitting, reset }) => (
@@ -11,7 +12,7 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
       <label>First Name</label>
       <div>
         <Field
-          name="firstName"
+          name="first_name"
           component={Input}
           type="text"
           placeholder="First Name"
@@ -23,7 +24,7 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
       <label>Last Name</label>
       <div>
         <Field
-          name="lastName"
+          name="last_name"
           component={Input}
           type="text"
           placeholder="Last Name"
@@ -44,12 +45,18 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
     </div>
 
     <div>
-      <button type="submit" disabled={pristine || submitting}>
-        Submit
-      </button>
-      <button type="button" disabled={pristine || submitting} onClick={reset}>
-        Clear Values
-      </button>
+      <Button
+        primary
+        type="submit"
+        disabled={pristine || submitting}
+        title="Submit"
+      />
+      <Button
+        type="button"
+        disabled={pristine || submitting}
+        onPress={reset}
+        title="Clear Values"
+      />
     </div>
   </form>
 );
