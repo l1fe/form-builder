@@ -1,0 +1,41 @@
+{
+  "fields": [
+    {
+      "id": "first_name",
+      "type": "text",
+      "name": "first_name",
+      "label": "First Name",
+      "placeholder": "Enter your first name",
+      "required": true
+    },
+    {
+      "id": "last_name",
+      "type": "text",
+      "name": "last_name",
+      "label": "Last Name",
+      "placeholder": "Enter your last name",
+      "required": true
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "name": "email",
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "required": true
+    }
+  ],
+  "buttons": [
+    {
+      "id": "submit_btn",
+      "shouldSubmit": true,
+      "primary": true,
+      "title": "Submit"
+    },
+    {
+      "id": "reset_btn",
+      "shouldReset": true,
+      "title": "Clear values"
+    }
+  ]
+}

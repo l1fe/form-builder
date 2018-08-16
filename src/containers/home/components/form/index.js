@@ -5,60 +5,61 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import Input from '../../../../components/input';
 import Button from '../../../../components/button';
-import validate from './validate';
 import styles from './styles.scss';
+
+// import form configuration from JSON file
+import form from './form.json';
+
+const requiredValidation = value => value ? undefined : 'This field is required';
 
 let Form = ({ handleSubmit, pristine, submitting, reset }) => (
   <form onSubmit={handleSubmit} className={styles.form}>
-    <div>
-      <label>First Name</label>
-      <div>
-        <Field
-          name="first_name"
-          component={Input}
-          type="text"
-          placeholder="First Name"
-        />
-      </div>
-    </div>
+
+    {form.fields.map(({ id, label, name, type, placeholder, required }) => {
+      const validations = [];
+
+      if (required) {
+        validations.push(requiredValidation);
+      }
+
+      return (
+        <div key={id}>
+          <label>{ label } { required && '*' }</label>
+          <Field
+            name={name}
+            component={Input}
+            type={type}
+            placeholder={placeholder}
+            validate={validations}
+          />
+        </div>
+      );
+    })}
 
     <div>
-      <label>Last Name</label>
-      <div>
-        <Field
-          name="last_name"
-          component={Input}
-          type="text"
-          placeholder="Last Name"
-        />
-      </div>
-    </div>
+      {form.buttons.map(({ id, primary, title, shouldReset, shouldSubmit }) => {
+        let type = 'button';
+        let onPressHandler = () => {};
+        const disabled = pristine || submitting;
 
-    <div>
-      <label>Email</label>
-      <div>
-        <Field
-          name="email"
-          component={Input}
-          type="email"
-          placeholder="Email"
-        />
-      </div>
-    </div>
+        if (shouldSubmit) {
+          type = 'submit';
+          onPressHandler = handleSubmit;
+        } else if (shouldReset) {
+          onPressHandler = reset;
+        }
 
-    <div>
-      <Button
-        primary
-        type="submit"
-        disabled={pristine || submitting}
-        title="Submit"
-      />
-      <Button
-        type="button"
-        disabled={pristine || submitting}
-        onPress={reset}
-        title="Clear Values"
-      />
+        return (
+          <Button
+            key={id}
+            primary={primary}
+            type={type}
+            onPress={onPressHandler}
+            title={title}
+            disabled={disabled}
+          />
+        );
+      })}
     </div>
   </form>
 );
@@ -73,7 +74,6 @@ Form.propTypes = {
 
 Form = reduxForm({
   form: 'simple',
-  validate,
 })(Form);
 
 // use form value selector to get form inner values
