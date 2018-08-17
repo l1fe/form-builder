@@ -3,7 +3,7 @@ import React from 'react';
 import FormBuilder from '../../components/form-builder';
 import styles from './styles.scss';
 
-import formConfig from './components/form/form.json'; // import form configuration from JSON file
+import formConfig from './form.json'; // import form configuration from JSON file
 
 const Home = () => (
   <div className={styles.container}>
