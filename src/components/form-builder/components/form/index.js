@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 
 import { evaluateExpression } from 'lib/utils';
-import { Input, Button } from 'components';
+import { Input, Button, RemovableField } from 'components';
 
 import styles from './styles.scss';
 
@@ -34,7 +33,7 @@ const Form = ({ configuration, handleSubmit, reset, formValues, pristine, submit
       return (
         <div key={id}>
           <label>{ label } { required && '*' }</label>
-          <Field
+          <RemovableField
             name={name}
             component={Input}
             type={type}
