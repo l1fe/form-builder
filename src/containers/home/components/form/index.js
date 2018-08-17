@@ -1,25 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, getFormValues } from 'redux-form';
 
 import Input from '../../../../components/input';
 import Button from '../../../../components/button';
+import { evaluateExpression } from '../../../../lib/utils';
 import styles from './styles.scss';
-
-// import form configuration from JSON file
-import form from './form.json';
+import form from './form.json'; // import form configuration from JSON file
 
 const requiredValidation = value => value ? undefined : 'This field is required';
 
-let Form = ({ handleSubmit, pristine, submitting, reset }) => (
+let Form = ({ handleSubmit, pristine, submitting, reset, formValues }) => (
   <form onSubmit={handleSubmit} className={styles.form}>
 
-    {form.fields.map(({ id, label, name, type, placeholder, required }) => {
+    {form.fields.map(({ id, label, name, type, placeholder, required, showIf }) => {
       const validations = [];
-
       if (required) {
         validations.push(requiredValidation);
+      }
+
+      const visible = !showIf || evaluateExpression(showIf, formValues);
+      if (!visible) {
+        return false;
       }
 
       return (
@@ -70,6 +73,7 @@ Form.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   hasFirstName: PropTypes.bool,
+  formValues: PropTypes.shape({}),
 };
 
 Form = reduxForm({
@@ -77,11 +81,10 @@ Form = reduxForm({
 })(Form);
 
 // use form value selector to get form inner values
-const selector = formValueSelector('simple');
 const mapStateToProps = (state) => {
-  const firstName = selector(state, 'first_name');
+  const values = getFormValues('simple')(state);
   return {
-    hasFirstName: !!firstName,
+    formValues: values || { },
   };
 };
 

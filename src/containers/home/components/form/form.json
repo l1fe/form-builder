@@ -23,6 +23,15 @@
       "label": "Email",
       "placeholder": "Enter your email",
       "required": true
+    },
+    {
+      "id": "age",
+      "type": "number",
+      "name": "number",
+      "label": "label",
+      "placeholder": "Enter your age",
+      "required": true,
+      "showIf": "{first_name} && {last_name} && {email}"
     }
   ],
   "buttons": [
