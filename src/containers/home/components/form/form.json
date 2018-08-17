@@ -14,7 +14,8 @@
       "name": "last_name",
       "label": "Last Name",
       "placeholder": "Enter your last name",
-      "required": true
+      "required": true,
+      "showIf": "{first_name}"
     },
     {
       "id": "email",
@@ -22,7 +23,8 @@
       "name": "email",
       "label": "Email",
       "placeholder": "Enter your email",
-      "required": true
+      "required": true,
+      "showIf": "{first_name} && {last_name}"
     },
     {
       "id": "age",
