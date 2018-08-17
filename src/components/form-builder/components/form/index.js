@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-import { evaluateExpression } from '../../lib/utils';
-import Input from '../input';
-import Button from '../button';
+import { evaluateExpression } from '../../../../lib/utils';
+import Input from '../../../input';
+import Button from '../../../button';
 
 import styles from './styles.scss';
 

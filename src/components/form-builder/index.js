@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm, getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import Form from './form';
+import Form from './components/form';
 
 class FormBuilder extends PureComponent {
   renderForm = () => {

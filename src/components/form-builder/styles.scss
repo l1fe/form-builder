@@ -1,18 +1,1 @@
 @import '../../styles/settings/colors';
-
-.form {
-  display: block;
-  margin: 60px auto 0;
-  width: 100%;
-  max-width: 400px;
-
-  label {
-    display: block;
-    margin-top: 24px;
-    margin-left: 15px;
-    text-align: left;
-    letter-spacing: 1px;
-    color: $color-navy;
-    font-weight: 300;
-  }
-}

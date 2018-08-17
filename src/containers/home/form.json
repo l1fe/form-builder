@@ -30,7 +30,7 @@
       "id": "age",
       "type": "number",
       "name": "number",
-      "label": "label",
+      "label": "Your Age",
       "placeholder": "Enter your age",
       "required": true,
       "showIf": "{first_name} && {last_name} && {email}"
