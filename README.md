@@ -55,7 +55,7 @@ Currently, types `text`, `email` , `number` and `select` (with `options`) are su
   	{ "value": "value2", "label": "Label Two" }
   ],
   "showIf": "{first_name} && {last_name}" // Expression
-},
+}
 ```
 
 ### Button Schema
@@ -68,7 +68,7 @@ Used for generating form's buttons. One of the fields `shouldSubmit`  (*for subm
   "title": "Submit", // any 'string', is required
   "shouldSubmit": true, // any 'boolean',
   "shouldReset": true //any 'boolean'
-},
+}
 ```
 
 ### Expression
