@@ -44,17 +44,17 @@ Currently, types `text`, `email` , `number` and `select` (with `options`) are su
 `showIf` is an optional field that is designed for handling show / hide field logic and has a special syntax described below.
 ```js
 {
-	"id": "email", // any 'string', is required
-	"type": "email", // one of { 'text', 'email', 'number', 'select' }, is required
-	"name": "email_address", // any 'string', is required
-	"label": "Your Email", // any 'string', is required
-	"placeholder": "Enter your email", // any 'string', is required
-	"required": true, // any 'boolean'
-	"options": [ // 'array' (should be used only with type === 'select')
-	    { "value": "value1", "label": "Label One" },
-		{ "value": "value2", "label": "Label Two" }
-	],
-	"showIf": "{first_name} && {last_name}" // Expression
+  "id": "email", // any 'string', is required
+  "type": "email", // one of { 'text', 'email', 'number', 'select' }, is required
+  "name": "email_address", // any 'string', is required
+  "label": "Your Email", // any 'string', is required
+  "placeholder": "Enter your email", // any 'string', is required
+  "required": true, // any 'boolean'
+  "options": [ // 'array' (should be used only with type === 'select')
+      { "value": "value1", "label": "Label One" },
+  	{ "value": "value2", "label": "Label Two" }
+  ],
+  "showIf": "{first_name} && {last_name}" // Expression
 },
 ```
 
@@ -63,11 +63,11 @@ Currently, types `text`, `email` , `number` and `select` (with `options`) are su
 Used for generating form's buttons. One of the fields `shouldSubmit`  (*for submitting form*) , `shouldReset` (*for clearing form's values*) must be specified.
 ```js
 {
-	"id": "email", // any 'string', is required
-	"primary": true, // any 'boolean'
-	"title": "Submit", // any 'string', is required
-	"shouldSubmit": true, // any 'boolean',
-	"shouldReset": true //any 'boolean'
+  "id": "email", // any 'string', is required
+  "primary": true, // any 'boolean'
+  "title": "Submit", // any 'string', is required
+  "shouldSubmit": true, // any 'boolean',
+  "shouldReset": true //any 'boolean'
 },
 ```
 
@@ -77,11 +77,11 @@ If you create a field with `name` `first_name`, you can use the value of this fi
 Expression is evaluated by `javascrtipt`'s built-in `eval` function .
 Here are the examples of valid Expression's :
 ```js
-	const validExpressions = [
-		'{first_name} && {last_name} && {gender} && {age}', // all values for the fields with given names are specified
-		'{email}', // value of the field with name 'email' is specified
-		'{gender} === \'female\'' // value of the field with name 'gender' is 'female'
-	];
+const validExpressions = [
+  '{first_name} && {last_name} && {gender} && {age}', // all values for the fields with given names are specified
+  '{email}', // value of the field with name 'email' is specified
+  '{gender} === \'female\'' // value of the field with name 'gender' is 'female'
+];
 ```
 
 ### Example of the valid JSON configuration
