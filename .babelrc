@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "react-app"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
+    ],
+    "transform-export-extensions"
+  ]
+}

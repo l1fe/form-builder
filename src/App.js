@@ -1,9 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import store from './redux/store';
-import Home from './containers/home';
-import './styles/base.css';
+import store from 'redux/store';
+import { Home } from 'containers';
+
+import './styles/base.scss';
 
 const App = () => (
   <Provider store={store}>
