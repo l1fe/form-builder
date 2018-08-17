@@ -1,20 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, getFormValues } from 'redux-form';
+import { Field } from 'redux-form';
 
-import Input from '../../../../components/input';
-import Button from '../../../../components/button';
-import { evaluateExpression } from '../../../../lib/utils';
+import { evaluateExpression } from '../../lib/utils';
+import Input from '../input';
+import Button from '../button';
+
 import styles from './styles.scss';
-import form from './form.json'; // import form configuration from JSON file
 
 const requiredValidation = value => value ? undefined : 'This field is required';
 
-let Form = ({ handleSubmit, pristine, submitting, reset, formValues }) => (
-  <form onSubmit={handleSubmit} className={styles.form}>
-
-    {form.fields.map(({ id, label, name, type, placeholder, required, showIf }) => {
+const Form = ({ configuration, handleSubmit, reset, formValues, pristine, submitting }) => (
+  <form className={styles.form}>
+    {configuration.fields.map(({
+      id,
+      label,
+      name,
+      type,
+      placeholder,
+      required,
+      showIf,
+    }) => {
       const validations = [];
       if (required) {
         validations.push(requiredValidation);
@@ -40,7 +46,13 @@ let Form = ({ handleSubmit, pristine, submitting, reset, formValues }) => (
     })}
 
     <div>
-      {form.buttons.map(({ id, primary, title, shouldReset, shouldSubmit }) => {
+      {configuration.buttons.map(({
+        id,
+        primary,
+        title,
+        shouldReset,
+        shouldSubmit,
+      }) => {
         let type = 'button';
         let onPressHandler = () => {};
         const disabled = pristine || submitting;
@@ -68,26 +80,27 @@ let Form = ({ handleSubmit, pristine, submitting, reset, formValues }) => (
 );
 
 Form.propTypes = {
+  configuration: PropTypes.shape({
+    fields: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      placeholder: PropTypes.string.isRequired,
+      required: PropTypes.bool,
+    })).isRequired,
+    buttons: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      shouldSubmit: PropTypes.bool,
+      shouldReset: PropTypes.bool,
+      title: PropTypes.string.isRequired,
+    })).isRequired,
+  }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  formValues: PropTypes.shape({}),
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
-  hasFirstName: PropTypes.bool,
-  formValues: PropTypes.shape({}),
 };
-
-Form = reduxForm({
-  form: 'simple',
-})(Form);
-
-// use form value selector to get form inner values
-const mapStateToProps = (state) => {
-  const values = getFormValues('simple')(state);
-  return {
-    formValues: values || { },
-  };
-};
-
-Form = connect(mapStateToProps)(Form);
 
 export default Form;
