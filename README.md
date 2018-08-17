@@ -22,6 +22,22 @@ yarn install
 yarn start
 ```
 
+## <FormBuilder ... /> component
+
+To create a form from the specific configuration file, simply do the following:
+
+```js
+ // import form configuration from JSON file
+import formConfig from './form.json';
+
+// later use <FormBuilder ... /> component to render the form
+<FormBuilder
+  formName="form1" // specify form's name (should be unique)
+  configuration={formConfig} // specify form's configuration
+  onSubmit={(values) => alert(JSON.stringify(values))} // specify onSubmit handler
+/>
+```
+
 ## Syntax
 
 **Form Builder** uses the specific syntax for generating fields and evaluating  expressions.
