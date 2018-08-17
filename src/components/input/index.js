@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import InputSelect from './input-select';
+
 import styles from './styles.scss';
 
 const Input = (props) => {
@@ -9,11 +11,20 @@ const Input = (props) => {
 
   return (
     <div className={styles.container}>
-      <input
-        {...input}
-        {...rest}
-        className={[styles.input, hasErrors && styles.withErrors].join(' ')}
-      />
+      { rest.type === 'select' &&
+        <InputSelect
+          {...input}
+          {...rest}
+          className={[styles.select, hasErrors && styles.withErrors].join(' ')}
+        />
+      }
+      { rest.type !== 'select' &&
+        <input
+          {...input}
+          {...rest}
+          className={[styles.input, hasErrors && styles.withErrors].join(' ')}
+        />
+      }
       { hasErrors && <div className={styles.error}>{ meta.error }</div> }
     </div>
   );

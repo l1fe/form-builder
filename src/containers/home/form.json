@@ -18,13 +18,24 @@
       "showIf": "{first_name}"
     },
     {
+      "id": "gender",
+      "type": "select",
+      "name": "gender",
+      "label": "Gender",
+      "required": true,
+      "options": [
+        { "value": "male", "label": "Male" },
+        { "value": "female", "label": "Female" }
+      ]
+    },
+    {
       "id": "email",
       "type": "email",
       "name": "email",
       "label": "Email",
       "placeholder": "Enter your email",
       "required": true,
-      "showIf": "{first_name} && {last_name}"
+      "showIf": "{first_name} && {last_name} && {gender}"
     },
     {
       "id": "age",
@@ -33,7 +44,7 @@
       "label": "Your Age",
       "placeholder": "Enter your age",
       "required": true,
-      "showIf": "{first_name} && {last_name} && {email}"
+      "showIf": "{first_name} && {last_name} && {gender} && {email}"
     }
   ],
   "buttons": [

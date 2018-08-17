@@ -16,6 +16,7 @@ const Form = ({ configuration, handleSubmit, reset, formValues, pristine, submit
       label,
       name,
       type,
+      options,
       placeholder,
       required,
       showIf,
@@ -38,6 +39,7 @@ const Form = ({ configuration, handleSubmit, reset, formValues, pristine, submit
             component={Input}
             type={type}
             placeholder={placeholder}
+            options={options}
             validate={validations}
           />
         </div>
@@ -86,6 +88,10 @@ Form.propTypes = {
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       placeholder: PropTypes.string.isRequired,
+      options: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        value: PropTypes.any.isRequired,
+      })),
       required: PropTypes.bool,
     })).isRequired,
     buttons: PropTypes.arrayOf(PropTypes.shape({
