@@ -26,7 +26,35 @@
       "options": [
         { "value": "male", "label": "Male" },
         { "value": "female", "label": "Female" }
-      ]
+      ],
+      "showIf": "{first_name} && {last_name}"
+    },
+    {
+      "id": "fav_pub",
+      "type": "text",
+      "name": "fav_pub",
+      "label": "Your Favourite Pub",
+      "placeholder": "Enter your favourite pub's name",
+      "required": true,
+      "showIf": "{gender} === 'male'"
+    },
+    {
+      "id": "fav_beauty_studio",
+      "type": "text",
+      "name": "fav_beauty_studio",
+      "label": "Your Favourite Beauty Studio",
+      "placeholder": "Enter your favourite beauty studio's name",
+      "required": true,
+      "showIf": "{gender} === 'female'"
+    },
+    {
+      "id": "age",
+      "type": "number",
+      "name": "age",
+      "label": "Your Age",
+      "placeholder": "Enter your age",
+      "required": true,
+      "showIf": "{first_name} && {last_name} && {gender}"
     },
     {
       "id": "email",
@@ -35,16 +63,7 @@
       "label": "Email",
       "placeholder": "Enter your email",
       "required": true,
-      "showIf": "{first_name} && {last_name} && {gender}"
-    },
-    {
-      "id": "age",
-      "type": "number",
-      "name": "number",
-      "label": "Your Age",
-      "placeholder": "Enter your age",
-      "required": true,
-      "showIf": "{first_name} && {last_name} && {gender} && {email}"
+      "showIf": "{first_name} && {last_name} && {gender} && {age}"
     }
   ],
   "buttons": [
