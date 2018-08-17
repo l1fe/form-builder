@@ -3,6 +3,7 @@
 .btn {
   display: block;
   position: relative;
+  transition: .4s;
   margin-top: 20px;
   outline: 0;
   border: 1px solid $color-darkblue;
@@ -16,10 +17,19 @@
   color: $color-darkblue;
   font-size: 16px;
   font-weight: 300;
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: .8;
+  }
 }
 
 .primary {
   border: 0;
   background-color: $color-lightblue;
-  color: $color-white;
+  color: $color-white !important;
 }
