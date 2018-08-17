@@ -7,7 +7,7 @@ import { Form } from './components';
 
 class FormBuilder extends PureComponent {
   renderForm = () => {
-    const { formName, configuration } = this.props;
+    const { formName, onSubmit, configuration } = this.props;
     let FormToRender = reduxForm({
       form: formName,
     })(Form);
@@ -22,7 +22,7 @@ class FormBuilder extends PureComponent {
 
     FormToRender = connect(mapStateToProps)(FormToRender);
 
-    return <FormToRender onSubmit={() => {}} configuration={configuration} />;
+    return <FormToRender onSubmit={onSubmit} configuration={configuration} />;
   }
 
   render() {
@@ -36,13 +36,18 @@ class FormBuilder extends PureComponent {
 
 FormBuilder.propTypes = {
   formName: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   configuration: PropTypes.shape({
     fields: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
+      placeholder: PropTypes.string,
+      options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.any.isRequired,
+      })),
       required: PropTypes.bool,
     })).isRequired,
     buttons: PropTypes.arrayOf(PropTypes.shape({

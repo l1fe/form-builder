@@ -28,7 +28,7 @@ const Form = ({ configuration, handleSubmit, reset, formValues, pristine, submit
 
       const visible = !showIf || evaluateExpression(showIf, formValues);
       if (!visible) {
-        return false;
+        return null;
       }
 
       return (
@@ -87,9 +87,9 @@ Form.propTypes = {
       type: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
+      placeholder: PropTypes.string,
       options: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
         value: PropTypes.any.isRequired,
       })),
       required: PropTypes.bool,

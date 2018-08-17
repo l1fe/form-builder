@@ -8,7 +8,11 @@ import formConfig from './form.json'; // import form configuration from JSON fil
 const Home = () => (
   <div className={styles.container}>
     <h1 className={styles.title}>Form Builder</h1>
-    <FormBuilder formName="form1" configuration={formConfig} />
+    <FormBuilder
+      formName="form1"
+      configuration={formConfig}
+      onSubmit={(values) => alert(JSON.stringify(values))}
+    />
   </div>
 );
 
